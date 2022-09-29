@@ -33,7 +33,7 @@ const ActivityDetails = () => {
         setBreakTime(time);
     }, [breakTime]);
     // added a tost 
-    const notify = () => toast("Activity Compleated!",{position:"top-center"});
+    const notify = () => toast("Activity Compleated!", { position: "top-center" });
     return (
         <div className='activity-container'>
             <div className='left-container'>
