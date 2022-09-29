@@ -3,6 +3,8 @@ import Exercise from '../Exercise/Exercise';
 import './ActivityDetails.css';
 import Logo from '../../images/Logo.jpg';
 import Mehedi from '../../images/Mehedi.jpg'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ActivityDetails = () => {
     const [exercise, setExercise] = useState([]);
@@ -30,8 +32,8 @@ const ActivityDetails = () => {
         const { time } = newTime;
         setBreakTime(time);
     }, [breakTime]);
-
-
+    // added a tost 
+    const notify = () => toast("Activity Compleated!",{position:"top-center"});
     return (
         <div className='activity-container'>
             <div className='left-container'>
@@ -39,6 +41,7 @@ const ActivityDetails = () => {
                     <img src={Logo} alt="" />
                     <h2 className='site-title'>FIVE MINUTE CHALLANGE!</h2><br />
                     <p>Select today's exercise:</p>
+                    <ToastContainer />
                 </div><br />
                 <div className='activities'>
                     {
@@ -84,7 +87,7 @@ const ActivityDetails = () => {
                 <p>Excercise Details</p><br />
                 <p className='exercise-time'>Exercise Time : {totalTimeRequired} sec</p>
                 <p className='break-time'>Break Time : {breakTime} sec</p>
-                <button className='compleated-btn'>Activity Compleated</button>
+                <button className='compleated-btn' onClick={notify}>Activity Compleated</button>
             </div>
         </div>
     );
