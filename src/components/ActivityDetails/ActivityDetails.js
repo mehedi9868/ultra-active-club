@@ -4,11 +4,18 @@ import './ActivityDetails.css';
 
 const ActivityDetails = () => {
     const [exercise, setExercise] = useState([]);
+    const [totalTimeRequired, setTotalTimeRequired] = useState(0);
     useEffect(() => {
         fetch('data.json')
             .then(res => res.json())
             .then(data => setExercise(data));
-    }, [])
+    }, []);
+
+    const handleExerciseTime = (time) => {
+        const newTotalTime = totalTimeRequired + time;
+        setTotalTimeRequired(newTotalTime);
+        console.log(totalTimeRequired);
+    }
     return (
         <div className='activity-container'>
             <div className='left-container'>
@@ -17,11 +24,11 @@ const ActivityDetails = () => {
                     <p>Select today's exercise:</p>
                 </div><br />
                 <div className='activities'>
-                    {/* <Exercise activities={exercise}></Exercise> */}
                     {
                         exercise.map(exercise => <Exercise
                             activity={exercise}
                             key={exercise.id}
+                            handleExerciseTime={handleExerciseTime}
                         >
                         </Exercise>)
                     }
@@ -58,7 +65,7 @@ const ActivityDetails = () => {
                     <button className='rounded-btn'>60sec</button>
                 </div><br />
                 <p>Excercise Details</p><br />
-                <p className='exercise-time'>Exercise Time</p>
+                <p className='exercise-time'>Exercise Time : {totalTimeRequired} sec</p>
                 <p className='break-time'>Break Time</p>
                 <button className='compleated-btn'>Activity Compleated</button>
             </div>
