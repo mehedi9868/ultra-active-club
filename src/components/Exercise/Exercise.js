@@ -8,7 +8,7 @@ const Exercise = ({ handleExerciseTime, activity }) => {
     return (
         <div className='exercise-card'>
             <img src={picture} alt="" />
-            <h3>Exercise : {name}</h3>
+            <h3>Name: {name}</h3>
             <h4>Time Required : {timeRequired} sec</h4>
             <button className='add-to-list-btn' onClick={() => handleExerciseTime(timeRequired)}>Add to list</button>
         </div>
