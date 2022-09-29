@@ -21,16 +21,21 @@ const ActivityDetails = () => {
         setTotalTimeRequired(newTotalTime);
     }
 
-    const addToDb = (value) => {
+    const addToDb = (value = 0) => {
         const newValue = { time: value };
         localStorage.setItem("breakTime", JSON.stringify({ ...newValue }, newValue));
         setBreakTime();
     }
     useEffect(() => {
+
         const Time = localStorage.getItem("breakTime");
         const newTime = JSON.parse(Time);
-        const { time } = newTime;
+        const time = newTime?.time;
         setBreakTime(time);
+        console.log(time);
+        if (time === undefined) {
+            addToDb();
+        } // to solve netlify white page issue.
     }, [breakTime]);
     // added a tost 
     const notify = () => toast("Activity Compleated!", { position: "top-center" });
