@@ -1,9 +1,9 @@
 import React from 'react';
 import './Exercise.css';
 
-const Exercise = (props) => {
+const Exercise = ({ handleExerciseTime, activity }) => {
     // console.log(props);
-    const { handleExerciseTime, activity } = props
+    // const { handleExerciseTime, activity } = props
     const { name, picture, timeRequired } = activity;
     return (
         <div className='exercise-card'>

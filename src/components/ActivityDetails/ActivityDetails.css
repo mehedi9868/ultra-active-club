@@ -25,20 +25,21 @@
     padding-bottom: 50px;
 }
 
+.activity-tracker-container {
+    min-width: 300px;
+    max-height: 100vh;
+    background-color: lightgray;
+    margin: 0px;
+    padding: 20px;
+
+}
+
 .info-container {
     display: flex;
 }
 
 .person-info {
     margin-left: 10px;
-}
-
-.activity-tracker-container {
-    min-width: 300px;
-    background-color: lightgray;
-    margin: 0px;
-    padding: 20px;
-
 }
 
 .person-details {
