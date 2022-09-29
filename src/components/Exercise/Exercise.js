@@ -1,12 +1,14 @@
 import React from 'react';
 import './Exercise.css';
 
-const Exercise = () => {
+const Exercise = (props) => {
+    const { id, name, picture, timeRequired } = props.activity
+    console.log(id, name, picture, timeRequired);
     return (
         <div className='exercise-card'>
-            <img src="https://i.pinimg.com/originals/47/ad/d5/47add5e5613dc702c7d97ce1be717859.gif" alt="" />
-            <h3>Exercise : Dumbbell Incline Curl.</h3>
-            <h4>Time Required : 45sec</h4>
+            <img src={picture} alt="" />
+            <h3>Exercise : {name}</h3>
+            <h4>Time Required : {timeRequired} sec</h4>
             <button className='add-to-list-btn'>Add to list</button>
         </div>
     );

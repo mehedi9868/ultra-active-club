@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Exercise from '../Exercise/Exercise';
 import './ActivityDetails.css';
 
 const ActivityDetails = () => {
+    const [exercise, setExercise] = useState([]);
+    useEffect(() => {
+        fetch('data.json')
+            .then(res => res.json())
+            .then(data => setExercise(data));
+    }, [])
     return (
         <div className='activity-container'>
             <div className='left-container'>
@@ -11,11 +17,14 @@ const ActivityDetails = () => {
                     <p>Select today's exercise:</p>
                 </div><br />
                 <div className='activities'>
-                    <Exercise></Exercise>
-                    <Exercise></Exercise>
-                    <Exercise></Exercise>
-                    <Exercise></Exercise>
-                    <Exercise></Exercise>
+                    {/* <Exercise activities={exercise}></Exercise> */}
+                    {
+                        exercise.map(exercise => <Exercise
+                            activity={exercise}
+                            key={exercise.id}
+                        >
+                        </Exercise>)
+                    }
                 </div>
             </div>
             <div className='activity-tracker-container'>
